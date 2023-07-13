@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerador de Senhas</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Gerador de Senhas</h1>
+
+    <form action="/gerar_senha" method="POST">
+        <label for="tamanho">Tamanho:</label>
+        <input type="number" name="tamanho" id="tamanho" min="1" max="100" required>
+        <input type="submit" value="Gerar Senha">
+    </form>
+</body>
+</html>
