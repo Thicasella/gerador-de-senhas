@@ -41,7 +41,17 @@ def gerar_senha():
     cursor.execute("INSERT INTO senhas (senha) VALUES (%s)", (senha,))
     db.commit()
 
-    return render_template('senha.html', senha=senha)
+    return render_template('index.html', senha=senha)
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+@app.route('/historico_senhas')
+def historico_senhas():
+    # Recuperar o histórico de senhas do banco de dados
+    cursor = db.cursor()
+    cursor.execute("SELECT senha FROM senhas;")
+    senhas = [senha[0] for senha in cursor.fetchall()]
+
+    return render_template('index.html', senhas=senhas)
+
